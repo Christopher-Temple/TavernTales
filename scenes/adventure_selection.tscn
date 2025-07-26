@@ -1,0 +1,276 @@
+[gd_scene load_steps=9 format=3 uid="uid://roblctl1lj4o"]
+
+[ext_resource type="Script" path="res://scripts/adventure_selection.gd" id="1_tmcu7"]
+[ext_resource type="PackedScene" uid="uid://c010wthanyp5e" path="res://scenes/load_character.tscn" id="2_41hhp"]
+[ext_resource type="Texture2D" uid="uid://kun25ew8op75" path="res://assets/images/newTitle.png" id="2_451aw"]
+[ext_resource type="Theme" uid="uid://3qw45yg8yw3l" path="res://themes/FileDialog.tres" id="3_7cema"]
+[ext_resource type="Texture2D" uid="uid://chrkm8olrd77n" path="res://assets/images/UI/contextBox.png" id="3_vsdko"]
+[ext_resource type="PackedScene" uid="uid://8yy25gv2xxsf" path="res://scenes/options_menu_button.tscn" id="6_d464q"]
+[ext_resource type="Theme" uid="uid://dco7pt1y644mi" path="res://themes/ConfirmPopup.tres" id="7_4moct"]
+[ext_resource type="AudioStream" uid="uid://biahidwgnemv1" path="res://assets/sfx/Selection.wav" id="8_hcose"]
+
+[node name="AdventureSelection" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_tmcu7")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.156863)
+position = Vector2(961, 541)
+scale = Vector2(1.00104, 1.00185)
+texture = ExtResource("2_451aw")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(546, 489)
+scale = Vector2(1, 1.17143)
+texture = ExtResource("3_vsdko")
+
+[node name="Container" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 1160.0
+offset_bottom = 658.0
+
+[node name="MarginLeft" type="HBoxContainer" parent="Container"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+
+[node name="LeftMain" type="VBoxContainer" parent="Container"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 34
+
+[node name="Container" type="Control" parent="Container/LeftMain"]
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 2
+
+[node name="BoxContainer" type="BoxContainer" parent="Container/LeftMain"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Container/LeftMain"]
+custom_minimum_size = Vector2(0, 300)
+layout_mode = 2
+
+[node name="StatLabels" type="VBoxContainer" parent="Container/LeftMain/HBoxContainer"]
+custom_minimum_size = Vector2(160, 0)
+layout_mode = 2
+
+[node name="NameLabel" type="RichTextLabel" parent="Container/LeftMain/HBoxContainer/StatLabels"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+bbcode_enabled = true
+text = "[right]Name :"
+scroll_active = false
+
+[node name="ClassLabel" type="RichTextLabel" parent="Container/LeftMain/HBoxContainer/StatLabels"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+bbcode_enabled = true
+text = "[right]Class :"
+scroll_active = false
+
+[node name="RaceLabel" type="RichTextLabel" parent="Container/LeftMain/HBoxContainer/StatLabels"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+bbcode_enabled = true
+text = "[right]Race :"
+scroll_active = false
+
+[node name="BackgroundLabel" type="RichTextLabel" parent="Container/LeftMain/HBoxContainer/StatLabels"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+bbcode_enabled = true
+text = "[right]Background :"
+scroll_active = false
+
+[node name="StrLabel" type="RichTextLabel" parent="Container/LeftMain/HBoxContainer/StatLabels"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+bbcode_enabled = true
+text = "[right]Strength :"
+scroll_active = false
+
+[node name="DexLabel" type="RichTextLabel" parent="Container/LeftMain/HBoxContainer/StatLabels"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+bbcode_enabled = true
+text = "[right]Dexterity :"
+scroll_active = false
+
+[node name="ConLabel" type="RichTextLabel" parent="Container/LeftMain/HBoxContainer/StatLabels"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+bbcode_enabled = true
+text = "[right]Constitution :"
+scroll_active = false
+
+[node name="WisLabel" type="RichTextLabel" parent="Container/LeftMain/HBoxContainer/StatLabels"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+bbcode_enabled = true
+text = "[right]Wisdom :"
+scroll_active = false
+
+[node name="ChaLabel" type="RichTextLabel" parent="Container/LeftMain/HBoxContainer/StatLabels"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+bbcode_enabled = true
+text = "[right]Charisma :"
+scroll_active = false
+
+[node name="TraitsLabel" type="RichTextLabel" parent="Container/LeftMain/HBoxContainer/StatLabels"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+bbcode_enabled = true
+text = "[right]Traits :"
+scroll_active = false
+
+[node name="StatValues" type="VBoxContainer" parent="Container/LeftMain/HBoxContainer"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+
+[node name="NameValue" type="RichTextLabel" parent="Container/LeftMain/HBoxContainer/StatValues"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+
+[node name="ClassValue" type="RichTextLabel" parent="Container/LeftMain/HBoxContainer/StatValues"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+
+[node name="RaceValue" type="RichTextLabel" parent="Container/LeftMain/HBoxContainer/StatValues"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+
+[node name="BackgroundValue" type="RichTextLabel" parent="Container/LeftMain/HBoxContainer/StatValues"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+
+[node name="StrValue" type="RichTextLabel" parent="Container/LeftMain/HBoxContainer/StatValues"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+
+[node name="DexValue" type="RichTextLabel" parent="Container/LeftMain/HBoxContainer/StatValues"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+
+[node name="ConValue" type="RichTextLabel" parent="Container/LeftMain/HBoxContainer/StatValues"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+
+[node name="WisValue" type="RichTextLabel" parent="Container/LeftMain/HBoxContainer/StatValues"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+
+[node name="ChaValue" type="RichTextLabel" parent="Container/LeftMain/HBoxContainer/StatValues"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+
+[node name="MarginMiddle" type="HBoxContainer" parent="Container"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+
+[node name="RightMain" type="VBoxContainer" parent="Container"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = -8
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Container/RightMain"]
+custom_minimum_size = Vector2(0, 375)
+layout_mode = 2
+
+[node name="HBoxContainer3" type="VBoxContainer" parent="Container/RightMain" groups=["testgroup"]]
+layout_mode = 2
+
+[node name="MarginRight" type="HBoxContainer" parent="Container"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+
+[node name="Return" type="Button" parent="."]
+custom_minimum_size = Vector2(150, 30)
+layout_mode = 2
+offset_left = 840.0
+offset_top = 1022.0
+offset_right = 992.0
+offset_bottom = 1052.0
+size_flags_horizontal = 4
+focus_mode = 0
+text = "Previous Menu"
+
+[node name="CharacterSelectLabel" type="Button" parent="."]
+custom_minimum_size = Vector2(150, 30)
+layout_mode = 2
+offset_left = 441.0
+offset_top = 233.0
+offset_right = 627.0
+offset_bottom = 263.0
+size_flags_horizontal = 4
+focus_mode = 0
+text = "Character Select"
+
+[node name="traitsValue" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 471.0
+offset_top = 614.0
+offset_right = 779.0
+offset_bottom = 681.0
+bbcode_enabled = true
+
+[node name="accept" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_hcose")
+
+[node name="dimscreen" type="ColorRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.768627)
+
+[node name="LoadCharacter" parent="." instance=ExtResource("2_41hhp")]
+title = "Choose Character Save File"
+initial_position = 1
+size = Vector2i(695, 400)
+visible = false
+content_scale_aspect = 4
+theme = ExtResource("3_7cema")
+ok_button_text = "Open"
+mode_overrides_title = false
+file_mode = 0
+access = 1
+filters = PackedStringArray("*.cfg")
+
+[node name="ErrorLoadingCharacter" type="AcceptDialog" parent="."]
+title = ""
+position = Vector2i(690, 435)
+size = Vector2i(300, 152)
+theme = ExtResource("7_4moct")
+dialog_text = "Error Loading File : missing critical character data."
+dialog_autowrap = true
+
+[node name="OptionsMenuButton" parent="." instance=ExtResource("6_d464q")]
+layout_mode = 0
+offset_left = 1852.0
+offset_top = 7.0
+offset_right = 1972.0
+offset_bottom = 127.0
+
+[connection signal="pressed" from="Return" to="." method="_on_return_pressed"]
+[connection signal="pressed" from="CharacterSelectLabel" to="." method="_on_character_select_label_pressed"]
+[connection signal="canceled" from="LoadCharacter" to="." method="_on_load_character_canceled"]
+[connection signal="file_selected" from="LoadCharacter" to="." method="_on_load_character_file_selected"]
+[connection signal="confirmed" from="ErrorLoadingCharacter" to="." method="_on_error_loading_character_confirmed"]

@@ -1,0 +1,62 @@
+[gd_scene load_steps=3 format=3 uid="uid://bvs0pq8l3afdj"]
+
+[ext_resource type="PackedScene" uid="uid://b6yh38mkw8c1j" path="res://scenes/gui.tscn" id="1_8lwiu"]
+[ext_resource type="Script" path="res://scripts/adventure_one.gd" id="1_nk8fu"]
+
+[node name="AdventureOne" type="Control" groups=["Adventure"]]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_nk8fu")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="BackgroundSpawn" type="Control" parent="." groups=["Background"]]
+anchors_preset = 0
+offset_left = 959.0
+offset_top = 303.0
+offset_right = 960.0
+offset_bottom = 307.0
+
+[node name="bgPlaceholder" type="Sprite2D" parent="BackgroundSpawn" groups=["CurrentBackground"]]
+position = Vector2(-576, -175)
+
+[node name="SpawnLeft" type="Control" parent="." groups=["LeftImageSpawn"]]
+anchors_preset = 0
+offset_left = 320.0
+offset_top = 310.0
+offset_right = 360.0
+offset_bottom = 350.0
+
+[node name="SpawnMiddle" type="Control" parent="." groups=["MiddleImageSpawn"]]
+anchors_preset = 0
+offset_left = 880.0
+offset_top = 310.0
+offset_right = 920.0
+offset_bottom = 350.0
+
+[node name="SpawnRight" type="Control" parent="." groups=["RightImageSpawn"]]
+anchors_preset = 0
+offset_left = 1522.0
+offset_top = 310.0
+offset_right = 1562.0
+offset_bottom = 350.0
+
+[node name="GUI" parent="." instance=ExtResource("1_8lwiu")]
+layout_mode = 1
+
+[node name="StartAdventure" type="Timer" parent="."]
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="StartAdventure" to="." method="_on_start_adventure_timeout"]

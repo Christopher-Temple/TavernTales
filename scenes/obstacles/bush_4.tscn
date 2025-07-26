@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://cyj6wrn3sew7c"]
+
+[ext_resource type="Texture2D" uid="uid://b4xfdjk22s2ab" path="res://assets/images/natureDecor/Bush 4 - Green 2.png" id="1_at3t7"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_se1no"]
+radius = 63.0079
+
+[node name="bush4" type="StaticBody2D"]
+collision_layer = 8
+collision_mask = 6
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -1)
+shape = SubResource("CircleShape2D_se1no")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-3, -1)
+texture = ExtResource("1_at3t7")

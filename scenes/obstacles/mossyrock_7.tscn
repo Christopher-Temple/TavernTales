@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://dkdy4pwcxbei6"]
+
+[ext_resource type="Texture2D" uid="uid://bmc6qph6v0rj4" path="res://assets/images/natureDecor/Mossy Boulder 7 - Green 1.png" id="1_qh88i"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xxw6g"]
+radius = 65.0692
+
+[node name="mossyrock_1" type="StaticBody2D"]
+collision_layer = 8
+collision_mask = 6
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-4, 5)
+rotation = -1.62141
+shape = SubResource("CircleShape2D_xxw6g")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-3, -1)
+texture = ExtResource("1_qh88i")

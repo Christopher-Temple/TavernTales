@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://dydwbv5xemg4w"]
+
+[ext_resource type="Texture2D" uid="uid://gtl8blp3nq42" path="res://assets/images/natureDecor/Stone 3.png" id="1_djiyl"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_se1no"]
+radius = 22.0227
+
+[node name="Stone3" type="StaticBody2D"]
+collision_layer = 8
+collision_mask = 6
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -1)
+shape = SubResource("CircleShape2D_se1no")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-3, -1)
+texture = ExtResource("1_djiyl")

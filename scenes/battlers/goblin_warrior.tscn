@@ -1,0 +1,181 @@
+[gd_scene load_steps=14 format=3 uid="uid://bmn2jh4fk2hs5"]
+
+[ext_resource type="Script" path="res://scripts/goblin_warrior.gd" id="1_1jmps"]
+[ext_resource type="PackedScene" uid="uid://ckxsmwh5w2wj0" path="res://scenes/projectiles/rock.tscn" id="2_nic7s"]
+[ext_resource type="SpriteFrames" uid="uid://djw1bjg01gh7a" path="res://scenes/battlers/goblin_warrior.tres" id="3_gec3e"]
+[ext_resource type="AudioStream" uid="uid://61h8gb1lrc7q" path="res://assets/sfx/hurt/goblin.ogg" id="7_oyrw2"]
+[ext_resource type="PackedScene" uid="uid://bx5vnfwoa0pw7" path="res://scenes/TokenParts/navigation_agent_2d.tscn" id="8_7lm6h"]
+[ext_resource type="PackedScene" uid="uid://dcc8x27t7wa7h" path="res://scenes/TokenParts/mana_bar.tscn" id="9_vro0g"]
+[ext_resource type="PackedScene" uid="uid://mtoog3pwppdb" path="res://scenes/TokenParts/health_bar.tscn" id="10_auxuw"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_566dm"]
+radius = 20.3961
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xrm15"]
+radius = 58.0345
+
+[sub_resource type="Animation" id="Animation_tmv2n"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("WarriorSprite:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_t60nu"]
+resource_name = "damaged"
+length = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("WarriorSprite:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.133333, 0.233333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0.96875, 0.0113525, 0.0113525, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_n7rqk"]
+resource_name = "death"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("WarriorSprite:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0001, 0.0002, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(2),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_k1ubj"]
+_data = {
+"RESET": SubResource("Animation_tmv2n"),
+"damaged": SubResource("Animation_t60nu"),
+"death": SubResource("Animation_n7rqk")
+}
+
+[node name="GoblinWarrior" type="CharacterBody2D" node_paths=PackedStringArray("healthBar", "manaBar", "nameTag", "combatShouts", "actionTimer", "hurtNoise", "animationPlayer", "marker", "meleeArea", "navigationAgent", "animatedSprite", "tokenSelf", "collisionShape") groups=["EnemyToken"]]
+collision_layer = 4
+collision_mask = 15
+motion_mode = 1
+script = ExtResource("1_1jmps")
+damageMinimum = 2
+damageMaximum = 6
+tokenName = "Goblin Warrior"
+tokenStrength = 8
+tokenDexterity = 6
+tokenWisdom = 2
+tokenConstitution = 7
+tokenCharisma = 2
+tokenSpeed = 130
+rangedProjectile = ExtResource("2_nic7s")
+healthBar = NodePath("HealthBar")
+manaBar = NodePath("ManaBar")
+nameTag = NodePath("Name")
+specialName = "[color=red]"
+combatShouts = NodePath("Shouts")
+actionTimer = NodePath("Timer")
+hurtNoise = NodePath("AudioStreamPlayer2D")
+animationPlayer = NodePath("AnimationPlayer")
+marker = NodePath("Marker2D")
+meleeArea = NodePath("Area2D")
+navigationAgent = NodePath("NavigationAgent2D")
+animatedSprite = NodePath("WarriorSprite")
+tokenSelf = NodePath(".")
+collisionShape = NodePath("CollisionShape2D")
+hasMelee = true
+hasRanged = true
+canChase = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, -1)
+shape = SubResource("CircleShape2D_566dm")
+
+[node name="WarriorSprite" type="AnimatedSprite2D" parent="."]
+scale = Vector2(4, 4)
+sprite_frames = ExtResource("3_gec3e")
+animation = &"move"
+autoplay = "idle"
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-1, -1)
+shape = SubResource("CircleShape2D_xrm15")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_k1ubj")
+}
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_oyrw2")
+
+[node name="Name" type="RichTextLabel" parent="."]
+offset_left = -44.0
+offset_top = -37.0
+offset_right = 140.0
+offset_bottom = -7.0
+scale = Vector2(0.5, 0.5)
+theme_override_constants/outline_size = 8
+bbcode_enabled = true
+text = "[color=red]Goblin Warrior
+"
+
+[node name="Shouts" type="RichTextLabel" parent="."]
+offset_left = 7.0
+offset_top = -25.0
+offset_right = 246.0
+
+[node name="NavigationAgent2D" parent="." instance=ExtResource("8_7lm6h")]
+
+[node name="ManaBar" parent="." instance=ExtResource("9_vro0g")]
+offset_left = -14.0
+offset_top = 21.0
+offset_right = 7.0
+offset_bottom = 24.0
+
+[node name="HealthBar" parent="." instance=ExtResource("10_auxuw")]
+offset_left = -14.0
+offset_top = 18.0
+offset_right = 7.0
+offset_bottom = 21.0
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+autostart = true
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(-22, 0)
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

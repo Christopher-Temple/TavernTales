@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://bx5vnfwoa0pw7"]
+
+[node name="NavigationAgent2D" type="NavigationAgent2D"]
+navigation_layers = 9
+path_postprocessing = 1
+simplify_path = true

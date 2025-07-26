@@ -1,0 +1,100 @@
+[gd_scene load_steps=6 format=3 uid="uid://bvdio1hro36oe"]
+
+[ext_resource type="Script" path="res://scripts/achievement_popup.gd" id="1_7qmcj"]
+[ext_resource type="Texture2D" uid="uid://chrkm8olrd77n" path="res://assets/images/UI/contextBox.png" id="1_enfx1"]
+
+[sub_resource type="Animation" id="Animation_c3dv7"]
+resource_name = "Popup"
+length = 6.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2.06667, 4, 5.96667),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1639, 1089), Vector2(1639, 929), Vector2(1639, 929), Vector2(1639, 1089)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(6),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_a2fjp"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1639, 1089)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xobab"]
+_data = {
+"Popup": SubResource("Animation_c3dv7"),
+"RESET": SubResource("Animation_a2fjp")
+}
+
+[node name="AchievementPopup" type="Control"]
+layout_mode = 3
+anchor_left = 0.851
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.148
+offset_left = -1633.92
+offset_top = -1080.0
+offset_bottom = -159.84
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_7qmcj")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_xobab")
+}
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 1639.0
+offset_top = 1089.0
+offset_right = 1909.0
+offset_bottom = 1216.0
+texture = ExtResource("1_enfx1")
+expand_mode = 1
+
+[node name="AchievementUnlocked" type="RichTextLabel" parent="TextureRect"]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 7.0
+offset_right = 260.0
+offset_bottom = 36.0
+bbcode_enabled = true
+text = "[wave][center]Achievement Unlocked"
+
+[node name="description" type="RichTextLabel" parent="TextureRect"]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 43.0
+offset_right = 258.0
+offset_bottom = 114.0
+bbcode_enabled = true

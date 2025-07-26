@@ -1,0 +1,82 @@
+[gd_scene load_steps=6 format=3 uid="uid://bvrmrymmaggv3"]
+
+[ext_resource type="Script" path="res://scripts/race_tooltip.gd" id="1_em087"]
+[ext_resource type="Texture2D" uid="uid://chrkm8olrd77n" path="res://assets/images/UI/contextBox.png" id="2_jlrvq"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qcmo4"]
+texture = ExtResource("2_jlrvq")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_uwrng"]
+
+[sub_resource type="Theme" id="Theme_edqof"]
+Panel/styles/panel = SubResource("StyleBoxTexture_qcmo4")
+PopupPanel/styles/panel = SubResource("StyleBoxEmpty_uwrng")
+
+[node name="RaceTooltip" type="Control"]
+modulate = Color(1, 1, 1, 0.870588)
+custom_minimum_size = Vector2(150, 200)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -3.0
+offset_right = -1770.0
+offset_bottom = -883.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_em087")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_right = 150.0
+offset_bottom = 200.0
+theme = SubResource("Theme_edqof")
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 3.0
+offset_top = 44.0
+offset_right = -3.0
+offset_bottom = -54.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Panel/MarginContainer"]
+layout_mode = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 16
+bbcode_enabled = true
+text = "[center]Stat PH"
+
+[node name="MarginContainer2" type="MarginContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 3.0
+offset_top = 147.0
+offset_right = -3.0
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TraitLabel" type="RichTextLabel" parent="Panel/MarginContainer2"]
+layout_mode = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 16
+bbcode_enabled = true
+text = "[center]Trait PH"
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="."]
+layout_mode = 2
+offset_left = 3.0
+offset_top = 12.0
+offset_right = 147.0
+offset_bottom = 41.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 28
+bbcode_enabled = true
+text = "[center]Title PH"

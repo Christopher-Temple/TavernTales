@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://bm76es00nqxkp"]
+
+[ext_resource type="Texture2D" uid="uid://ddut8vgq5qj5m" path="res://assets/images/natureDecor/Water Puddles 2.png" id="1_n753o"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3rf56"]
+radius = 43.0465
+
+[node name="Pond2" type="StaticBody2D"]
+collision_layer = 8
+collision_mask = 6
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-2, 2)
+shape = SubResource("CircleShape2D_3rf56")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_n753o")

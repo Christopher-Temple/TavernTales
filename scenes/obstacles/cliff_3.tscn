@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://numekg4e253w"]
+
+[ext_resource type="Texture2D" uid="uid://dp4fkqq8yncgv" path="res://assets/images/natureDecor/Cliff 3.png" id="1_hhhlt"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mytdt"]
+size = Vector2(266, 89)
+
+[node name="cliff1" type="StaticBody2D"]
+collision_layer = 8
+collision_mask = 6
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-4, 3.5)
+shape = SubResource("RectangleShape2D_mytdt")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-3, -1)
+texture = ExtResource("1_hhhlt")

@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://fq0mtmeka1y1"]
+
+[ext_resource type="Texture2D" uid="uid://5fcoje330jnv" path="res://assets/images/natureDecor/Treetops/1.png" id="1_alk78"]
+
+[node name="Treetop1" type="Sprite2D"]
+scale = Vector2(6, 6)
+texture = ExtResource("1_alk78")

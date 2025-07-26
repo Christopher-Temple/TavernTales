@@ -1,0 +1,112 @@
+[gd_scene load_steps=5 format=3 uid="uid://heib73iladp6"]
+
+[ext_resource type="Script" path="res://scripts/title.gd" id="1_ws37s"]
+[ext_resource type="Texture2D" uid="uid://kun25ew8op75" path="res://assets/images/newTitle.png" id="2_3orum"]
+[ext_resource type="AudioStream" uid="uid://biahidwgnemv1" path="res://assets/sfx/Selection.wav" id="3_v7yeb"]
+[ext_resource type="PackedScene" uid="uid://8yy25gv2xxsf" path="res://scenes/options_menu_button.tscn" id="4_ac3iy"]
+
+[node name="Title" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ws37s")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="image" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.768627)
+position = Vector2(960, 540)
+texture = ExtResource("2_3orum")
+
+[node name="accept" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_v7yeb")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 883.0
+offset_top = 636.0
+offset_right = 1131.0
+offset_bottom = 1022.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="start" type="Button" parent="HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+focus_mode = 0
+theme_override_font_sizes/font_size = 40
+text = "START"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+
+[node name="Guide" type="Button" parent="HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+focus_mode = 0
+theme_override_font_sizes/font_size = 40
+text = "GUIDE"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+
+[node name="options" type="Button" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+focus_mode = 0
+theme_override_font_sizes/font_size = 40
+text = "OPTIONS"
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+
+[node name="Achievements" type="Button" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Achievements"
+
+[node name="VBoxContainer5" type="VBoxContainer" parent="HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+
+[node name="Feedback" type="Button" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Feedback"
+
+[node name="VBoxContainer4" type="VBoxContainer" parent="HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+
+[node name="exit" type="Button" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+focus_mode = 0
+theme_override_font_sizes/font_size = 40
+text = "EXIT"
+
+[node name="OptionsMenuButton" parent="." instance=ExtResource("4_ac3iy")]
+layout_mode = 0
+offset_left = 1852.0
+offset_top = 7.0
+offset_right = 1972.0
+offset_bottom = 127.0
+
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/Guide" to="." method="_on_guide_pressed"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/options" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/Achievements" to="." method="_on_achievements_pressed"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/Feedback" to="." method="_on_feedback_pressed"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/exit" to="." method="_on_exit_pressed"]

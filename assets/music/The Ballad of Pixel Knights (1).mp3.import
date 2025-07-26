@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://8nl5jlegb2"
+path="res://.godot/imported/The Ballad of Pixel Knights (1).mp3-66bb46b1a2e300c0c6c6b9035caa9c84.mp3str"
+
+[deps]
+
+source_file="res://assets/music/The Ballad of Pixel Knights (1).mp3"
+dest_files=["res://.godot/imported/The Ballad of Pixel Knights (1).mp3-66bb46b1a2e300c0c6c6b9035caa9c84.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

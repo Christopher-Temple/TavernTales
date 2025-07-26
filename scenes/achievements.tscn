@@ -1,0 +1,163 @@
+[gd_scene load_steps=13 format=3 uid="uid://r4lhqiebgvu4"]
+
+[ext_resource type="Script" path="res://scripts/achievements.gd" id="1_vi8ex"]
+[ext_resource type="Texture2D" uid="uid://kun25ew8op75" path="res://assets/images/newTitle.png" id="1_wtlo4"]
+[ext_resource type="Texture2D" uid="uid://chrkm8olrd77n" path="res://assets/images/UI/contextBox.png" id="2_n00cy"]
+[ext_resource type="Texture2D" uid="uid://bmgjqvemd0osr" path="res://assets/images/UI/condAch.png" id="4_el65a"]
+[ext_resource type="PackedScene" uid="uid://8yy25gv2xxsf" path="res://scenes/options_menu_button.tscn" id="4_hh7p4"]
+[ext_resource type="Texture2D" uid="uid://c56oo6mxk326v" path="res://assets/images/UI/dialogAch.png" id="5_s374f"]
+[ext_resource type="Texture2D" uid="uid://ctkcrv2elpdm8" path="res://assets/images/UI/combatAch.png" id="6_o4ya7"]
+[ext_resource type="AudioStream" uid="uid://biahidwgnemv1" path="res://assets/sfx/Selection.wav" id="8_c6foh"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xuc7v"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5ko30"]
+texture = ExtResource("2_n00cy")
+texture_margin_left = 20.0
+texture_margin_top = 20.0
+texture_margin_right = 20.0
+texture_margin_bottom = 20.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d576i"]
+bg_color = Color(0.941176, 0.94902, 0.670588, 0.188235)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g82vn"]
+bg_color = Color(0.6, 0.6, 0.6, 0.27451)
+
+[node name="Achievements" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_vi8ex")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.113725)
+position = Vector2(960, 540)
+texture = ExtResource("1_wtlo4")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 29.0
+offset_bottom = 122.0
+grow_horizontal = 2
+theme_override_font_sizes/normal_font_size = 80
+bbcode_enabled = true
+text = "[center][color=white][rainbow]Achievements"
+
+[node name="ItemList" type="ItemList" parent="."]
+layout_mode = 0
+offset_left = 104.0
+offset_top = 175.0
+offset_right = 1819.0
+offset_bottom = 919.0
+theme_override_colors/font_color = Color(0.996094, 0.00389099, 0.00389099, 1)
+theme_override_styles/focus = SubResource("StyleBoxEmpty_xuc7v")
+theme_override_styles/panel = SubResource("StyleBoxTexture_5ko30")
+theme_override_styles/hovered = SubResource("StyleBoxFlat_d576i")
+theme_override_styles/selected = SubResource("StyleBoxFlat_g82vn")
+allow_search = false
+item_count = 12
+max_columns = 3
+same_column_width = true
+fixed_column_width = 500
+item_0/text = "A way to light the path"
+item_0/icon = ExtResource("4_el65a")
+item_1/text = "Wet Bandit"
+item_1/icon = ExtResource("4_el65a")
+item_2/text = "Sidekick"
+item_2/icon = ExtResource("5_s374f")
+item_3/text = "Loner"
+item_3/icon = ExtResource("5_s374f")
+item_4/text = "I just wanted the achievement...I swear!"
+item_4/icon = ExtResource("5_s374f")
+item_5/text = "It was weighing me down"
+item_5/icon = ExtResource("5_s374f")
+item_6/text = "Peddler's Mall"
+item_6/icon = ExtResource("5_s374f")
+item_7/text = "Splish Splash"
+item_7/icon = ExtResource("6_o4ya7")
+item_8/text = "Hakuna Matata"
+item_8/icon = ExtResource("4_el65a")
+item_9/text = "Quiet as a mouse"
+item_9/icon = ExtResource("4_el65a")
+item_10/text = "Nightcrawler"
+item_10/icon = ExtResource("4_el65a")
+item_11/text = "Ace Ventura"
+item_11/icon = ExtResource("4_el65a")
+
+[node name="OptionsMenuButton" parent="." instance=ExtResource("4_hh7p4")]
+layout_mode = 0
+offset_left = 1852.0
+offset_top = 7.0
+offset_right = 1972.0
+offset_bottom = 127.0
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 219.0
+offset_top = 141.0
+offset_right = 1689.0
+offset_bottom = 168.0
+color = Color(0.988281, 0.9767, 0.9767, 1)
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(320, 157)
+texture = ExtResource("4_el65a")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Sprite2D2"]
+offset_left = 13.0
+offset_top = -16.0
+offset_right = 336.0
+offset_bottom = 13.0
+text = "- Conditional Achievement"
+
+[node name="Sprite2D3" type="Sprite2D" parent="."]
+position = Vector2(847, 155)
+texture = ExtResource("6_o4ya7")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Sprite2D3"]
+offset_left = 13.0
+offset_top = -16.0
+offset_right = 261.0
+offset_bottom = 13.0
+text = "- Combat Achievement"
+
+[node name="Sprite2D4" type="Sprite2D" parent="."]
+position = Vector2(1349, 157)
+texture = ExtResource("5_s374f")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Sprite2D4"]
+offset_left = 13.0
+offset_top = -16.0
+offset_right = 261.0
+offset_bottom = 13.0
+text = "- Dialog Achievement"
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 897.0
+offset_top = 999.0
+offset_right = 984.0
+offset_bottom = 1039.0
+focus_mode = 0
+theme_override_font_sizes/font_size = 32
+text = "Return"
+
+[node name="accept" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_c6foh")
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

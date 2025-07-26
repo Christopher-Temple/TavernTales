@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://dvcsaveup3e0"]
+
+[ext_resource type="Texture2D" uid="uid://n6lw7qm1ats" path="res://assets/images/natureDecor/Fallen Tree - Mossy - Green 1.png" id="1_excat"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_donmi"]
+radius = 46.0929
+height = 358.452
+
+[node name="log" type="StaticBody2D"]
+collision_layer = 8
+collision_mask = 6
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-4, -5)
+rotation = -1.62141
+shape = SubResource("CapsuleShape2D_donmi")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-3, -1)
+texture = ExtResource("1_excat")

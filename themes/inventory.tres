@@ -1,0 +1,18 @@
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://c3drt8e6ya7fs"]
+
+[ext_resource type="Texture2D" uid="uid://b5o7uw6pkssui" path="res://assets/images/parchment.png" id="1_j0knc"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3x16g"]
+texture = ExtResource("1_j0knc")
+
+[resource]
+Tree/colors/children_hl_line_color = Color(0.960784, 0.964706, 0.0980392, 1)
+Tree/colors/font_color = Color(0, 0, 0, 1)
+Tree/colors/font_selected_color = Color(0.141724, 0.671875, 0.150007, 1)
+Tree/colors/parent_hl_line_color = Color(0.984375, 0.984375, 0.976685, 1)
+Tree/colors/relationship_line_color = Color(0, 0, 0, 1)
+Tree/constants/draw_guides = 0
+Tree/constants/draw_relationship_lines = 1
+Tree/constants/relationship_line_width = 1
+Tree/font_sizes/font_size = 16
+Tree/styles/panel = SubResource("StyleBoxTexture_3x16g")

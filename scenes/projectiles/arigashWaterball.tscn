@@ -1,0 +1,89 @@
+[gd_scene load_steps=12 format=3 uid="uid://0p4tofnp8lbc"]
+
+[ext_resource type="Script" path="res://scripts/arigash_waterball.gd" id="1_x3mx1"]
+[ext_resource type="Texture2D" uid="uid://bibu8tm6ap14t" path="res://assets/images/projectiles/arigashWaterball.png" id="2_mwmhl"]
+[ext_resource type="AudioStream" uid="uid://cogr0q4sknsc3" path="res://assets/sfx/spells/water_splash.ogg" id="3_sk80o"]
+[ext_resource type="AudioStream" uid="uid://bxsd6x7dvs58p" path="res://assets/sfx/spells/waterball.wav" id="4_rpub8"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h8ogm"]
+atlas = ExtResource("2_mwmhl")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_isw86"]
+atlas = ExtResource("2_mwmhl")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5sk0w"]
+atlas = ExtResource("2_mwmhl")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f8la7"]
+atlas = ExtResource("2_mwmhl")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ai3yy"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h8ogm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_isw86")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5sk0w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f8la7")
+}],
+"loop": false,
+"name": &"default",
+"speed": 2.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fha23"]
+radius = 6.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wl804"]
+
+[node name="ArigashWaterball" type="CharacterBody2D"]
+rotation = 1.5708
+collision_layer = 32
+collision_mask = 2
+motion_mode = 1
+script = ExtResource("1_x3mx1")
+projectileSpeed = 200
+projectileName = "waterball"
+minimumDamage = 4
+maximumDamage = 8
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+rotation = -1.5708
+sprite_frames = SubResource("SpriteFrames_ai3yy")
+frame = 3
+frame_progress = 1.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1.00002, 6)
+shape = SubResource("CircleShape2D_fha23")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 32
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(1.00002, 5)
+shape = SubResource("CircleShape2D_wl804")
+
+[node name="burst" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_sk80o")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(1.00002, 5)
+scale = Vector2(0.0783646, 0.0709254)
+
+[node name="fire" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_rpub8")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

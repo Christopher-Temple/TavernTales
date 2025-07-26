@@ -1,0 +1,86 @@
+[gd_scene load_steps=11 format=3 uid="uid://ckxsmwh5w2wj0"]
+
+[ext_resource type="Script" path="res://scripts/rock.gd" id="1_g8cy0"]
+[ext_resource type="Texture2D" uid="uid://bq80em7e3t4dq" path="res://assets/images/projectiles/rock.png" id="2_igmpw"]
+[ext_resource type="AudioStream" uid="uid://68aamitpgj7l" path="res://assets/sfx/attacks/impact_stone2.ogg" id="3_dldon"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_25hxf"]
+atlas = ExtResource("2_igmpw")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i8opj"]
+atlas = ExtResource("2_igmpw")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3482e"]
+atlas = ExtResource("2_igmpw")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v8clq"]
+atlas = ExtResource("2_igmpw")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ai3yy"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_25hxf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i8opj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3482e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v8clq")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fha23"]
+radius = 5.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wl804"]
+radius = 7.07107
+
+[node name="Rock" type="CharacterBody2D"]
+rotation = 1.5708
+collision_layer = 32
+collision_mask = 2
+motion_mode = 1
+script = ExtResource("1_g8cy0")
+projectileSpeed = 150
+projectileName = "rock"
+minimumDamage = 1
+maximumDamage = 3
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+rotation = -1.5708
+sprite_frames = SubResource("SpriteFrames_ai3yy")
+frame_progress = 0.377808
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1.00002, 6)
+shape = SubResource("CircleShape2D_fha23")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 32
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(1.00002, 6)
+shape = SubResource("CircleShape2D_wl804")
+
+[node name="burst" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_dldon")
+bus = &"sfx"
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(1.00002, 5)
+scale = Vector2(0.0783646, 0.0709254)
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

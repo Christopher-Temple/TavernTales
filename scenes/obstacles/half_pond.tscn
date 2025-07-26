@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://bd3tyspusxmn8"]
+
+[ext_resource type="Texture2D" uid="uid://pvsr3lev1wos" path="res://assets/images/natureDecor/halfPond.png" id="1_ckvke"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ycf37"]
+size = Vector2(326, 1181)
+
+[node name="HalfPond" type="Area2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_ckvke")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(24, -9.5)
+shape = SubResource("RectangleShape2D_ycf37")

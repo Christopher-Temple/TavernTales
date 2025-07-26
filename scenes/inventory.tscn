@@ -1,0 +1,78 @@
+[gd_scene load_steps=10 format=3 uid="uid://dkd6qs4u8bw7s"]
+
+[ext_resource type="Script" path="res://scripts/inventory.gd" id="1_b2n2u"]
+[ext_resource type="Theme" uid="uid://c3drt8e6ya7fs" path="res://themes/inventory.tres" id="2_nowg4"]
+[ext_resource type="Texture2D" uid="uid://b77epq4o5lcs1" path="res://assets/images/UI/windowClosePressed.png" id="3_vhu24"]
+[ext_resource type="Texture2D" uid="uid://s5a2c6iav6sv" path="res://assets/images/UI/windowClose.png" id="4_q8geq"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a7ow6"]
+bg_color = Color(0.234375, 0.122023, 0.0476074, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_smgot"]
+texture = ExtResource("3_vhu24")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_jciac"]
+texture = ExtResource("4_q8geq")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_vxa4r"]
+texture = ExtResource("3_vhu24")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3tvul"]
+texture = ExtResource("4_q8geq")
+
+[node name="Inventory" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 270.0
+offset_bottom = 355.0
+script = ExtResource("1_b2n2u")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_a7ow6")
+
+[node name="Tree" type="Tree" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.958
+offset_left = 4.0
+offset_top = 30.0
+offset_right = -4.0
+offset_bottom = 11.91
+size_flags_horizontal = 4
+size_flags_vertical = 4
+focus_mode = 0
+theme = ExtResource("2_nowg4")
+column_titles_visible = true
+allow_reselect = true
+
+[node name="Button" type="Button" parent="."]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 1
+offset_left = 242.0
+offset_top = 4.0
+offset_right = 262.0
+offset_bottom = 24.0
+focus_mode = 0
+theme_override_styles/hover_pressed = SubResource("StyleBoxTexture_smgot")
+theme_override_styles/hover = SubResource("StyleBoxTexture_jciac")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_vxa4r")
+theme_override_styles/normal = SubResource("StyleBoxTexture_3tvul")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 79.0
+offset_top = 4.0
+offset_right = 202.0
+offset_bottom = 38.0
+bbcode_enabled = true
+text = "[color=white]Inventory"
+
+[connection signal="item_selected" from="Tree" to="." method="_on_tree_item_selected"]
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

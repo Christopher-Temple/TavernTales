@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://c010wthanyp5e"]
+
+[node name="LoadCharacter" type="FileDialog"]
+size = Vector2i(303, 180)
+visible = true
+filters = PackedStringArray(".save")
+show_hidden_files = true

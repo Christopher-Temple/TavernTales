@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://dmc75kssrh3ng"]
+
+[ext_resource type="Texture2D" uid="uid://c84fmh6tgefkf" path="res://assets/images/natureDecor/Thick Foliage 3 - Green 2.png" id="1_8x5sd"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_se1no"]
+radius = 72.0278
+
+[node name="foliage3" type="StaticBody2D"]
+collision_layer = 8
+collision_mask = 6
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -1)
+shape = SubResource("CircleShape2D_se1no")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-3, -1)
+texture = ExtResource("1_8x5sd")

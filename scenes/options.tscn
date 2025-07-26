@@ -1,0 +1,269 @@
+[gd_scene load_steps=8 format=3 uid="uid://ddh55egowt8i5"]
+
+[ext_resource type="PackedScene" uid="uid://ypbjhwoc2iat" path="res://scenes/volume_slider.tscn" id="1_7d0ku"]
+[ext_resource type="Script" path="res://scripts/options.gd" id="1_yjpjc"]
+[ext_resource type="Texture2D" uid="uid://kun25ew8op75" path="res://assets/images/newTitle.png" id="2_8cal3"]
+[ext_resource type="AudioStream" uid="uid://biahidwgnemv1" path="res://assets/sfx/Selection.wav" id="4_la5oq"]
+[ext_resource type="Texture2D" uid="uid://cyes8dxhe5kcp" path="res://assets/images/UI/downArrow.png" id="7_5vmv8"]
+[ext_resource type="PackedScene" uid="uid://8yy25gv2xxsf" path="res://scenes/options_menu_button.tscn" id="7_aj575"]
+[ext_resource type="ButtonGroup" uid="uid://byd2jeon3h5f8" path="res://screen_size.tres" id="7_ojcdh"]
+
+[node name="Options" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_yjpjc")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.156863)
+position = Vector2(960, 540)
+texture = ExtResource("2_8cal3")
+
+[node name="Master" type="RichTextLabel" parent="."]
+custom_minimum_size = Vector2(450, 0)
+layout_mode = 2
+offset_left = 1006.0
+offset_top = 254.0
+offset_right = 1629.0
+offset_bottom = 319.0
+theme_override_colors/default_color = Color(0.996094, 0.996094, 0.996094, 1)
+theme_override_font_sizes/normal_font_size = 64
+bbcode_enabled = true
+text = "[center]Master"
+
+[node name="Music" type="RichTextLabel" parent="."]
+layout_mode = 2
+offset_left = 1091.0
+offset_top = 422.0
+offset_right = 1541.0
+offset_bottom = 490.0
+size_flags_horizontal = 3
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/normal_font_size = 64
+bbcode_enabled = true
+text = "[center]Music"
+
+[node name="SFX" type="RichTextLabel" parent="."]
+custom_minimum_size = Vector2(450, 32)
+layout_mode = 2
+offset_left = 1084.0
+offset_top = 579.0
+offset_right = 1535.0
+offset_bottom = 648.0
+theme_override_colors/default_color = Color(0.996094, 0.996094, 0.996094, 1)
+theme_override_font_sizes/normal_font_size = 64
+bbcode_enabled = true
+text = "[center]Sound Effects"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+offset_left = 862.0
+offset_top = 238.0
+offset_right = 1312.0
+offset_bottom = 490.0
+scale = Vector2(2, 2)
+alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+
+[node name="Master Volume" parent="VBoxContainer" instance=ExtResource("1_7d0ku")]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+
+[node name="SFX Volume" parent="VBoxContainer" instance=ExtResource("1_7d0ku")]
+layout_mode = 2
+size_flags_vertical = 1
+bus_name = "music"
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+
+[node name="Music Volume" parent="VBoxContainer" instance=ExtResource("1_7d0ku")]
+layout_mode = 2
+size_flags_vertical = 3
+bus_name = "sfx"
+
+[node name="return" type="Button" parent="."]
+layout_mode = 0
+offset_left = 668.0
+offset_top = 991.0
+offset_right = 771.0
+offset_bottom = 1024.0
+focus_mode = 0
+theme_override_font_sizes/font_size = 32
+text = "RETURN"
+
+[node name="save" type="Button" parent="."]
+layout_mode = 0
+offset_left = 862.0
+offset_top = 989.0
+offset_right = 1048.0
+offset_bottom = 1022.0
+focus_mode = 0
+theme_override_font_sizes/font_size = 32
+text = "SAVE SETTINGS"
+
+[node name="Accept" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_la5oq")
+bus = &"sfx"
+
+[node name="HBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 125.0
+offset_top = 348.0
+offset_right = 169.0
+offset_bottom = 516.0
+scale = Vector2(2, 2)
+
+[node name="BoxContainer3" type="BoxContainer" parent="HBoxContainer"]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+
+[node name="FullScreen" type="CheckBox" parent="HBoxContainer"]
+layout_mode = 2
+focus_mode = 0
+button_group = ExtResource("7_ojcdh")
+
+[node name="BoxContainer2" type="BoxContainer" parent="HBoxContainer"]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+
+[node name="Windowed" type="CheckBox" parent="HBoxContainer"]
+layout_mode = 2
+focus_mode = 0
+button_group = ExtResource("7_ojcdh")
+
+[node name="BoxContainer4" type="BoxContainer" parent="HBoxContainer"]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+
+[node name="EncryptData" type="CheckBox" parent="HBoxContainer"]
+layout_mode = 2
+tooltip_text = "If enabled, character files will be encrypted to prevent manual editing."
+focus_mode = 0
+
+[node name="BoxContainer5" type="BoxContainer" parent="HBoxContainer"]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+
+[node name="Debug" type="CheckBox" parent="HBoxContainer"]
+layout_mode = 2
+tooltip_text = "If enabled, debug information will show during adventures."
+focus_mode = 0
+
+[node name="optionsSavedText" type="RichTextLabel" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 1164.0
+offset_top = 978.0
+offset_right = 1363.0
+offset_bottom = 1007.0
+text = "Settings Saved!"
+
+[node name="Timer" type="Timer" parent="optionsSavedText"]
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 217.0
+offset_top = 359.0
+offset_right = 454.0
+offset_bottom = 426.0
+theme_override_font_sizes/normal_font_size = 54
+bbcode_enabled = true
+text = "[color=white]Fullscreen"
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 214.0
+offset_top = 454.0
+offset_right = 451.0
+offset_bottom = 521.0
+theme_override_font_sizes/normal_font_size = 54
+bbcode_enabled = true
+text = "[color=white]Windowed"
+
+[node name="RichTextLabel3" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 215.0
+offset_top = 539.0
+offset_right = 764.0
+offset_bottom = 606.0
+theme_override_font_sizes/normal_font_size = 54
+bbcode_enabled = true
+text = "[color=white]Encrypt Character Data"
+
+[node name="RichTextLabel4" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 215.0
+offset_top = 614.0
+offset_right = 669.0
+offset_bottom = 681.0
+theme_override_font_sizes/normal_font_size = 54
+bbcode_enabled = true
+text = "[color=white]Show Debug Info."
+
+[node name="OptionsMenuButton" parent="." instance=ExtResource("7_aj575")]
+layout_mode = 0
+offset_left = 1852.0
+offset_top = 7.0
+offset_right = 1972.0
+offset_bottom = 127.0
+
+[node name="MusicChooser" type="OptionButton" parent="."]
+layout_mode = 0
+offset_left = 1322.0
+offset_top = 800.0
+offset_right = 1691.0
+offset_bottom = 874.0
+focus_mode = 0
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_icons/arrow = ExtResource("7_5vmv8")
+item_count = 5
+popup/item_0/text = "The Wandering Knights Ballad"
+popup/item_1/text = "The Dancing Nymph"
+popup/item_1/id = 1
+popup/item_2/text = "Broken Tankard"
+popup/item_2/id = 2
+popup/item_3/text = "A Walk Through The Square"
+popup/item_3/id = 3
+popup/item_4/text = "Fond Memories"
+popup/item_4/id = 4
+
+[node name="RichTextLabel5" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 858.0
+offset_top = 796.0
+offset_right = 1313.0
+offset_bottom = 871.0
+theme_override_font_sizes/normal_font_size = 64
+bbcode_enabled = true
+text = "[color=white]Background Music"
+
+[connection signal="pressed" from="return" to="." method="_on_return_pressed"]
+[connection signal="pressed" from="save" to="." method="_on_save_pressed"]
+[connection signal="toggled" from="HBoxContainer/FullScreen" to="." method="_on_full_screen_toggled"]
+[connection signal="toggled" from="HBoxContainer/Windowed" to="." method="_on_windowed_toggled"]
+[connection signal="toggled" from="HBoxContainer/EncryptData" to="." method="_on_encrypt_data_toggled"]
+[connection signal="toggled" from="HBoxContainer/Debug" to="." method="_on_debug_toggled"]
+[connection signal="timeout" from="optionsSavedText/Timer" to="." method="_on_timer_timeout"]
+[connection signal="item_selected" from="MusicChooser" to="." method="_on_music_chooser_item_selected"]

@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dr73wg4gcyl6t"
+path="res://.godot/imported/The Dancing Nymph.mp3-8722bbf04c3e54b3a32b289985eabe9b.mp3str"
+
+[deps]
+
+source_file="res://assets/music/The Dancing Nymph.mp3"
+dest_files=["res://.godot/imported/The Dancing Nymph.mp3-8722bbf04c3e54b3a32b289985eabe9b.mp3str"]
+
+[params]
+
+loop=true
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

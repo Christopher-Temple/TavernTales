@@ -1,0 +1,276 @@
+[gd_scene load_steps=9 format=3 uid="uid://b6yh38mkw8c1j"]
+
+[ext_resource type="Texture2D" uid="uid://c5f2c3e7rj4r1" path="res://assets/images/gui.png" id="1_7iqyi"]
+[ext_resource type="Script" path="res://scripts/gui.gd" id="1_um64t"]
+[ext_resource type="AudioStream" uid="uid://biahidwgnemv1" path="res://assets/sfx/Selection.wav" id="4_gt0w3"]
+[ext_resource type="PackedScene" uid="uid://dkd6qs4u8bw7s" path="res://scenes/inventory.tscn" id="6_hg8o7"]
+[ext_resource type="Texture2D" uid="uid://100ur8okuh2h" path="res://assets/images/statsGUI.png" id="9_7er2n"]
+[ext_resource type="PackedScene" uid="uid://8yy25gv2xxsf" path="res://scenes/options_menu_button.tscn" id="9_ctcot"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_08p33"]
+bg_color = Color(0.204437, 0.601563, 0.589406, 0.243137)
+expand_margin_left = 20.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w1mq2"]
+bg_color = Color(0.141176, 0.607843, 0.607843, 0.172549)
+expand_margin_left = 20.0
+
+[node name="GUI" type="Control" groups=["GUI"]]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1.0
+offset_top = 16.0
+offset_right = -1.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_um64t")
+
+[node name="GUI_Image" type="Sprite2D" parent="."]
+texture_filter = 3
+position = Vector2(962.051, 540)
+scale = Vector2(1.9201, 1.448)
+texture = ExtResource("1_7iqyi")
+
+[node name="AdventureText" type="RichTextLabel" parent="."]
+texture_filter = 3
+clip_contents = false
+layout_mode = 0
+offset_left = 452.0
+offset_top = 699.0
+offset_right = 1491.0
+offset_bottom = 970.0
+theme_override_colors/font_outline_color = Color(0.2, 0.2, 0.2, 1)
+bbcode_enabled = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 1589.0
+offset_top = 703.0
+offset_right = 1776.0
+offset_bottom = 963.0
+
+[node name="VBoxContainer6" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="OptionOne" type="Button" parent="HBoxContainer/VBoxContainer6"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 0
+disabled = true
+text = "Disabled"
+
+[node name="OptionTwo" type="Button" parent="HBoxContainer/VBoxContainer6"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 0
+disabled = true
+text = "Disabled"
+
+[node name="OptionThree" type="Button" parent="HBoxContainer/VBoxContainer6"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 0
+disabled = true
+text = "Disabled"
+
+[node name="OptionFour" type="Button" parent="HBoxContainer/VBoxContainer6"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 0
+disabled = true
+text = "Disabled"
+
+[node name="OptionFive" type="Button" parent="HBoxContainer/VBoxContainer6"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 0
+disabled = true
+text = "Disabled"
+
+[node name="OptionSix" type="Button" parent="HBoxContainer/VBoxContainer6"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 0
+disabled = true
+text = "Disabled"
+
+[node name="Inventory" type="Button" parent="HBoxContainer/VBoxContainer6"]
+layout_mode = 2
+focus_mode = 0
+text = " Inventory"
+
+[node name="TestFight" type="Button" parent="HBoxContainer/VBoxContainer6"]
+visible = false
+layout_mode = 2
+text = "TEST FIGHT"
+
+[node name="Click" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_gt0w3")
+volume_db = 24.0
+bus = &"sfx"
+
+[node name="StatsGUI" type="Sprite2D" parent="."]
+position = Vector2(225, 831)
+texture = ExtResource("9_7er2n")
+
+[node name="Name" type="RichTextLabel" parent="."]
+custom_minimum_size = Vector2(205, 0)
+layout_mode = 0
+offset_left = 102.0
+offset_top = 716.0
+offset_right = 349.0
+offset_bottom = 745.0
+tooltip_text = "Character Name"
+bbcode_enabled = true
+text = "[center]Name"
+
+[node name="RaceAndClass" type="RichTextLabel" parent="."]
+custom_minimum_size = Vector2(205, 35)
+layout_mode = 0
+offset_left = 103.0
+offset_top = 754.0
+offset_right = 348.0
+offset_bottom = 789.0
+tooltip_text = "Character Race & Class"
+bbcode_enabled = true
+text = "[center]Race And Class"
+scroll_active = false
+
+[node name="Background" type="RichTextLabel" parent="."]
+custom_minimum_size = Vector2(205, 35)
+layout_mode = 0
+offset_left = 103.0
+offset_top = 793.0
+offset_right = 348.0
+offset_bottom = 828.0
+tooltip_text = "Character Background"
+bbcode_enabled = true
+text = "[center]Background"
+
+[node name="StoryID" type="RichTextLabel" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 245.0
+offset_top = 916.0
+offset_right = 354.0
+offset_bottom = 949.0
+tooltip_text = "Used to debug issues. "
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+bbcode_enabled = true
+text = "ID: 001"
+fit_content = true
+
+[node name="Str" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 106.0
+offset_top = 835.0
+offset_right = 213.0
+offset_bottom = 866.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+bbcode_enabled = true
+text = "Str: 12"
+
+[node name="Dex" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 244.0
+offset_top = 836.0
+offset_right = 352.0
+offset_bottom = 867.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+bbcode_enabled = true
+text = "Dex: 12"
+
+[node name="Wis" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 245.0
+offset_top = 876.0
+offset_right = 352.0
+offset_bottom = 907.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+bbcode_enabled = true
+text = "Wis: 12"
+
+[node name="Con" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 107.0
+offset_top = 876.0
+offset_right = 215.0
+offset_bottom = 907.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+bbcode_enabled = true
+text = "Con: 12"
+
+[node name="Cha" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 107.0
+offset_top = 917.0
+offset_right = 215.0
+offset_bottom = 951.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+bbcode_enabled = true
+text = "Cha: 12"
+
+[node name="LineEdit" type="LineEdit" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 19.0
+offset_top = 2.0
+offset_right = 1179.0
+offset_bottom = 43.0
+focus_mode = 1
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_styles/focus = SubResource("StyleBoxFlat_08p33")
+theme_override_styles/normal = SubResource("StyleBoxFlat_w1mq2")
+placeholder_text = "debug on/off to toggle debugging. Enter an integer to skip to that ID"
+context_menu_enabled = false
+middle_mouse_paste_enabled = false
+drag_and_drop_selection_enabled = false
+
+[node name="Inventory" parent="." instance=ExtResource("6_hg8o7")]
+visible = false
+offset_left = 1526.0
+offset_top = 624.0
+offset_right = 1796.0
+offset_bottom = 979.0
+tooltip_text = "Clicking on a weapon or armor will set it as equipped."
+
+[node name="NameAndAct" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 725.0
+offset_top = 580.0
+offset_right = 1222.0
+offset_bottom = 620.0
+bbcode_enabled = true
+
+[node name="OptionsMenuButton" parent="." instance=ExtResource("9_ctcot")]
+layout_mode = 0
+offset_left = 1852.0
+offset_top = 7.0
+offset_right = 1972.0
+offset_bottom = 127.0
+
+[connection signal="button_down" from="HBoxContainer/VBoxContainer6/OptionOne" to="." method="_on_option_one_button_down"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer6/OptionOne" to="." method="_on_option_one_pressed"]
+[connection signal="button_down" from="HBoxContainer/VBoxContainer6/OptionTwo" to="." method="_on_option_one_2_button_down"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer6/OptionTwo" to="." method="_on_option_one_2_pressed"]
+[connection signal="button_down" from="HBoxContainer/VBoxContainer6/OptionThree" to="." method="_on_option_one_3_button_down"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer6/OptionThree" to="." method="_on_option_one_3_pressed"]
+[connection signal="button_down" from="HBoxContainer/VBoxContainer6/OptionFour" to="." method="_on_option_one_4_button_down"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer6/OptionFour" to="." method="_on_option_one_4_pressed"]
+[connection signal="button_down" from="HBoxContainer/VBoxContainer6/OptionFive" to="." method="_on_option_one_4_button_down"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer6/OptionFive" to="." method="_on_option_one_5_pressed"]
+[connection signal="button_down" from="HBoxContainer/VBoxContainer6/OptionSix" to="." method="_on_option_one_4_button_down"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer6/OptionSix" to="." method="_on_option_one_6_pressed"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer6/Inventory" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer6/TestFight" to="." method="_on_button_2_pressed"]
+[connection signal="text_submitted" from="LineEdit" to="." method="_on_line_edit_text_submitted"]

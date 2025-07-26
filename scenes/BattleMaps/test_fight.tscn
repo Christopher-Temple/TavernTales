@@ -1,0 +1,153 @@
+[gd_scene load_steps=15 format=3 uid="uid://du54vcgqfmy4"]
+
+[ext_resource type="Script" path="res://scripts/forest_fight.gd" id="1_lxb2d"]
+[ext_resource type="Texture2D" uid="uid://3yre23dqgweb" path="res://assets/images/maps/a_1_goblin_ambush.png" id="2_1j8o8"]
+[ext_resource type="PackedScene" uid="uid://bmn2jh4fk2hs5" path="res://scenes/battlers/goblin_warrior.tscn" id="4_hfvig"]
+[ext_resource type="PackedScene" uid="uid://bj358surifjun" path="res://scenes/battlers/playerToken.tscn" id="4_qfikq"]
+[ext_resource type="PackedScene" uid="uid://bylnxnr71v4dk" path="res://scenes/battlers/goblinArcher.tscn" id="5_n1je4"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_432kn"]
+vertices = PackedVector2Array(1562.88, 784, 1562.88, 394, 1601, 710, 1601, 1065, 293, 577, 293, 190, 451.25, 392, 451.25, 782, 1906, 360.75, 1906, 1065, 1877, 1065, 1877, 710, 1685, 360.75, 1559, 394, 1559, 392, 1685, 19, 959, 640, 495, 640, 495, 434, 1519.13, 434, 1519.13, 645, 1058, 645, 959, 782, 1058, 787, 1557.5, 787, 1557.5, 784, 16, 1065, 64, 577, 16, 19, 64, 190)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 5, 6, 7), PackedInt32Array(8, 9, 10, 11), PackedInt32Array(12, 8, 11, 2, 1), PackedInt32Array(12, 1, 13, 14, 15), PackedInt32Array(16, 17, 18, 19), PackedInt32Array(16, 19, 20, 21), PackedInt32Array(22, 16, 21, 23), PackedInt32Array(24, 25, 0, 3), PackedInt32Array(24, 3, 26, 23), PackedInt32Array(22, 23, 26, 7), PackedInt32Array(4, 7, 26, 27), PackedInt32Array(27, 26, 28, 29), PackedInt32Array(29, 28, 15, 5), PackedInt32Array(6, 5, 15, 14)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(1920, 1, 1917, 1084, 0, 1081, -3, -2)])
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ufvl3"]
+size = Vector2(1962, 10)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_30ss3"]
+size = Vector2(486, 122)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ue0sd"]
+size = Vector2(479.5, 122)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_71itc"]
+size = Vector2(1087.75, 22)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_coh5g"]
+size = Vector2(23.75, 370)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_aaxx3"]
+size = Vector2(209, 367)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_imvt4"]
+size = Vector2(256, 357.5)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fl0d2"]
+bg_color = Color(0, 0, 0, 0.670588)
+
+[node name="TestFight" type="Node2D" groups=["BattleMap"]]
+script = ExtResource("1_lxb2d")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(970, 549)
+texture = ExtResource("2_1j8o8")
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+navigation_polygon = SubResource("NavigationPolygon_432kn")
+
+[node name="Colliders" type="Node2D" parent="NavigationRegion2D"]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="NavigationRegion2D/Colliders"]
+position = Vector2(-4, 9)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NavigationRegion2D/Colliders/StaticBody2D"]
+position = Vector2(945, -5)
+shape = SubResource("RectangleShape2D_ufvl3")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="NavigationRegion2D/Colliders"]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="NavigationRegion2D/Colliders/StaticBody2D2"]
+position = Vector2(960, 1080)
+shape = SubResource("RectangleShape2D_ufvl3")
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="NavigationRegion2D/Colliders"]
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="NavigationRegion2D/Colliders/StaticBody2D3"]
+position = Vector2(1, 518)
+rotation = -1.5708
+shape = SubResource("RectangleShape2D_ufvl3")
+
+[node name="StaticBody2D4" type="StaticBody2D" parent="NavigationRegion2D/Colliders"]
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="NavigationRegion2D/Colliders/StaticBody2D4"]
+position = Vector2(1921, 406)
+rotation = -1.5708
+shape = SubResource("RectangleShape2D_ufvl3")
+
+[node name="StaticBody2D5" type="StaticBody2D" parent="NavigationRegion2D/Colliders"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NavigationRegion2D/Colliders/StaticBody2D5"]
+position = Vector2(706, 711)
+shape = SubResource("RectangleShape2D_30ss3")
+
+[node name="StaticBody2D6" type="StaticBody2D" parent="NavigationRegion2D/Colliders"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NavigationRegion2D/Colliders/StaticBody2D6"]
+position = Vector2(1307.75, 716)
+shape = SubResource("RectangleShape2D_ue0sd")
+
+[node name="StaticBody2D7" type="StaticBody2D" parent="NavigationRegion2D/Colliders"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NavigationRegion2D/Colliders/StaticBody2D7"]
+position = Vector2(1005.13, 413)
+shape = SubResource("RectangleShape2D_71itc")
+
+[node name="StaticBody2D8" type="StaticBody2D" parent="NavigationRegion2D/Colliders"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NavigationRegion2D/Colliders/StaticBody2D8"]
+position = Vector2(473.125, 587)
+shape = SubResource("RectangleShape2D_coh5g")
+
+[node name="StaticBody2D9" type="StaticBody2D" parent="NavigationRegion2D/Colliders"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NavigationRegion2D/Colliders/StaticBody2D9"]
+position = Vector2(1541, 589)
+shape = SubResource("RectangleShape2D_coh5g")
+
+[node name="StaticBody2D10" type="StaticBody2D" parent="NavigationRegion2D/Colliders"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NavigationRegion2D/Colliders/StaticBody2D10"]
+position = Vector2(178.5, 383.5)
+shape = SubResource("RectangleShape2D_aaxx3")
+
+[node name="StaticBody2D11" type="StaticBody2D" parent="NavigationRegion2D/Colliders"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NavigationRegion2D/Colliders/StaticBody2D11"]
+position = Vector2(1739, 898.75)
+shape = SubResource("RectangleShape2D_imvt4")
+
+[node name="StaticBody2D12" type="StaticBody2D" parent="NavigationRegion2D/Colliders"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NavigationRegion2D/Colliders/StaticBody2D12"]
+position = Vector2(1823, 172)
+shape = SubResource("RectangleShape2D_imvt4")
+
+[node name="PlayerToken" parent="." instance=ExtResource("4_qfikq")]
+position = Vector2(797, 210)
+
+[node name="GoblinWarrior" parent="." instance=ExtResource("4_hfvig")]
+position = Vector2(1608, 104)
+
+[node name="GoblinWarrior2" parent="." instance=ExtResource("4_hfvig")]
+position = Vector2(1588, 311)
+
+[node name="CombatLog" type="RichTextLabel" parent="."]
+offset_left = 21.0
+offset_top = 888.0
+offset_right = 744.0
+offset_bottom = 1067.0
+theme_override_colors/default_color = Color(0.980469, 0.980469, 0.980469, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_fl0d2")
+bbcode_enabled = true
+scroll_following = true
+
+[node name="GoblinWarrior4" parent="." instance=ExtResource("4_hfvig")]
+position = Vector2(1833, 456)
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[node name="GoblinArcher" parent="." instance=ExtResource("5_n1je4")]
+position = Vector2(1436, 519)
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

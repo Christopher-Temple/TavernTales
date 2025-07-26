@@ -1,0 +1,316 @@
+[gd_scene load_steps=32 format=3 uid="uid://cfdexqcshq5kk"]
+
+[ext_resource type="Script" path="res://scripts/slime_zombie.gd" id="1_6r5tx"]
+[ext_resource type="Texture2D" uid="uid://ebc64rj4irmw" path="res://assets/images/animatedSprites/Waterlogged Zombie/death.png" id="2_y311a"]
+[ext_resource type="Texture2D" uid="uid://bp7ga0esxvmhl" path="res://assets/images/animatedSprites/Waterlogged Zombie/idle.png" id="3_hqsv2"]
+[ext_resource type="AudioStream" uid="uid://61h8gb1lrc7q" path="res://assets/sfx/hurt/goblin.ogg" id="3_w5jv1"]
+[ext_resource type="Texture2D" uid="uid://6wom7camx1kn" path="res://assets/images/animatedSprites/Waterlogged Zombie/attack.png" id="4_j68o8"]
+[ext_resource type="PackedScene" uid="uid://dcc8x27t7wa7h" path="res://scenes/TokenParts/mana_bar.tscn" id="4_wh3pt"]
+[ext_resource type="Texture2D" uid="uid://jx03rmqyodcd" path="res://assets/images/animatedSprites/Waterlogged Zombie/move.png" id="5_ybp5a"]
+[ext_resource type="PackedScene" uid="uid://mtoog3pwppdb" path="res://scenes/TokenParts/health_bar.tscn" id="7_yrkl7"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jchmc"]
+radius = 35.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ov46k"]
+atlas = ExtResource("2_y311a")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8u6f2"]
+atlas = ExtResource("2_y311a")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4bu4q"]
+atlas = ExtResource("2_y311a")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5uvbb"]
+atlas = ExtResource("2_y311a")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6pdm7"]
+atlas = ExtResource("3_hqsv2")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ixh4m"]
+atlas = ExtResource("3_hqsv2")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6tlyt"]
+atlas = ExtResource("3_hqsv2")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a0qpf"]
+atlas = ExtResource("3_hqsv2")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hnx6h"]
+atlas = ExtResource("4_j68o8")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_utm7n"]
+atlas = ExtResource("4_j68o8")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_40f7f"]
+atlas = ExtResource("4_j68o8")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3iupn"]
+atlas = ExtResource("4_j68o8")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yerg5"]
+atlas = ExtResource("5_ybp5a")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yk5j7"]
+atlas = ExtResource("5_ybp5a")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7otex"]
+atlas = ExtResource("5_ybp5a")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_llwo3"]
+atlas = ExtResource("5_ybp5a")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lh8ok"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ov46k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8u6f2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4bu4q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5uvbb")
+}],
+"loop": false,
+"name": &"death",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6pdm7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ixh4m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6tlyt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a0qpf")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 7.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hnx6h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_utm7n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_40f7f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3iupn")
+}],
+"loop": false,
+"name": &"melee_attack",
+"speed": 7.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yerg5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yk5j7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7otex")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_llwo3")
+}],
+"loop": true,
+"name": &"move",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7ag8w"]
+radius = 58.0086
+
+[sub_resource type="Animation" id="Animation_8kyvq"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_2m22i"]
+resource_name = "damaged"
+length = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.133333, 0.233333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0.980469, 0.00382996, 0.00382996, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_ax7ah"]
+resource_name = "death"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.0333333, 1.96667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1.96667),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_siscd"]
+_data = {
+"RESET": SubResource("Animation_8kyvq"),
+"damaged": SubResource("Animation_2m22i"),
+"death": SubResource("Animation_ax7ah")
+}
+
+[node name="SlimeZombie" type="CharacterBody2D" node_paths=PackedStringArray("healthBar", "manaBar", "nameTag", "combatShouts", "actionTimer", "hurtNoise", "animationPlayer", "marker", "meleeArea", "navigationAgent", "animatedSprite", "tokenSelf", "collisionShape") groups=["EnemyToken"]]
+collision_layer = 4
+collision_mask = 15
+motion_mode = 1
+script = ExtResource("1_6r5tx")
+damageMinimum = 3
+damageMaximum = 5
+tokenName = "Waterlogged Zombie"
+tokenStrength = 8
+tokenDexterity = 8
+tokenWisdom = 2
+tokenConstitution = 6
+tokenCharisma = 2
+tokenSpeed = 100
+healthBar = NodePath("HealthBar")
+manaBar = NodePath("ManaBar")
+nameTag = NodePath("Name")
+specialName = "[color=red]"
+combatShouts = NodePath("CombatShouts")
+actionTimer = NodePath("Timer")
+hurtNoise = NodePath("HurtNoise")
+animationPlayer = NodePath("AnimationPlayer")
+marker = NodePath("Marker2D")
+meleeArea = NodePath("Area2D")
+navigationAgent = NodePath("NavigationAgent2D")
+animatedSprite = NodePath("AnimatedSprite2D")
+tokenSelf = NodePath(".")
+collisionShape = NodePath("CollisionShape2D")
+hasMelee = true
+canChase = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+light_mask = 4
+visibility_layer = 14
+shape = SubResource("CircleShape2D_jchmc")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_lh8ok")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 10
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_7ag8w")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+path_postprocessing = 1
+simplify_path = true
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
+
+[node name="Name" type="RichTextLabel" parent="."]
+offset_left = -105.0
+offset_top = -81.0
+offset_right = 151.0
+offset_bottom = -51.0
+theme_override_constants/outline_size = 8
+bbcode_enabled = true
+text = "[color=red]Waterlogged Zombie"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_siscd")
+}
+
+[node name="CombatShouts" type="RichTextLabel" parent="."]
+offset_left = 57.0
+offset_top = -48.0
+offset_right = 445.0
+offset_bottom = 11.0
+bbcode_enabled = true
+
+[node name="Marker2D" type="Marker2D" parent="."]
+
+[node name="HurtNoise" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_w5jv1")
+
+[node name="HealthBar" parent="." instance=ExtResource("7_yrkl7")]
+offset_left = -15.0
+offset_top = 34.0
+offset_right = 6.0
+offset_bottom = 37.0
+
+[node name="ManaBar" parent="." instance=ExtResource("4_wh3pt")]
+offset_left = -15.0
+offset_top = 37.0
+offset_right = 6.0
+offset_bottom = 40.0
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

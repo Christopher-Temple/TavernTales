@@ -1,0 +1,189 @@
+[gd_scene load_steps=14 format=3 uid="uid://bylnxnr71v4dk"]
+
+[ext_resource type="Script" path="res://scripts/goblin_archer.gd" id="1_vyvl6"]
+[ext_resource type="PackedScene" uid="uid://ck2lsxamdppye" path="res://scenes/projectiles/enemy_arrow.tscn" id="2_v3srh"]
+[ext_resource type="SpriteFrames" uid="uid://ebau5qycbyuo" path="res://scenes/battlers/goblinArcher.tres" id="3_qiyvm"]
+[ext_resource type="AudioStream" uid="uid://61h8gb1lrc7q" path="res://assets/sfx/hurt/goblin.ogg" id="4_rqvm6"]
+[ext_resource type="PackedScene" uid="uid://dcc8x27t7wa7h" path="res://scenes/TokenParts/mana_bar.tscn" id="5_0ti03"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jchmc"]
+radius = 35.0143
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7ag8w"]
+radius = 79.0063
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xqe76"]
+bg_color = Color(0.15625, 0.00915527, 0.00915527, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p1ixp"]
+bg_color = Color(0.714844, 0.111694, 0.111694, 1)
+
+[sub_resource type="Animation" id="Animation_8kyvq"]
+length = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_2m22i"]
+resource_name = "damaged"
+length = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.233333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 0.0195313, 0.0195313, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_sqjui"]
+resource_name = "death"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.9, 1.2, 1.5, 1.8, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.909804), Color(1, 1, 1, 0.784314), Color(1, 1, 1, 0.662745), Color(1, 1, 1, 0.556863), Color(1, 1, 1, 0.431373), Color(1, 1, 1, 0.32549), Color(1, 1, 1, 0.145098), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1.96667),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_siscd"]
+_data = {
+"RESET": SubResource("Animation_8kyvq"),
+"damaged": SubResource("Animation_2m22i"),
+"death": SubResource("Animation_sqjui")
+}
+
+[node name="GoblinArcher" type="CharacterBody2D" node_paths=PackedStringArray("healthBar", "manaBar", "nameTag", "combatShouts", "actionTimer", "hurtNoise", "animationPlayer", "marker", "meleeArea", "navigationAgent", "animatedSprite", "tokenSelf", "collisionShape") groups=["EnemyToken"]]
+collision_layer = 4
+collision_mask = 11
+script = ExtResource("1_vyvl6")
+damageMinimum = 1
+damageMaximum = 2
+tokenName = "Goblin Archer"
+tokenStrength = 4
+tokenDexterity = 9
+tokenWisdom = 4
+tokenConstitution = 5
+tokenCharisma = 4
+tokenSpeed = 150
+rangedProjectile = ExtResource("2_v3srh")
+healthBar = NodePath("HealthBar")
+manaBar = NodePath("ManaBar")
+nameTag = NodePath("Name")
+specialName = "[color=red]"
+combatShouts = NodePath("CombatShouts")
+actionTimer = NodePath("Timer")
+hurtNoise = NodePath("HurtNoise")
+animationPlayer = NodePath("AnimationPlayer")
+marker = NodePath("Marker2D")
+meleeArea = NodePath("Area2D")
+navigationAgent = NodePath("NavigationAgent2D")
+animatedSprite = NodePath("AnimatedSprite2D")
+tokenSelf = NodePath(".")
+collisionShape = NodePath("CollisionShape2D")
+hasRanged = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(7, 5)
+scale = Vector2(4, 4)
+sprite_frames = ExtResource("3_qiyvm")
+animation = &"attack_ranged"
+autoplay = "idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+light_mask = 4
+visibility_layer = 14
+shape = SubResource("CircleShape2D_jchmc")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 10
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_7ag8w")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+path_postprocessing = 1
+simplify_path = true
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
+
+[node name="Name" type="RichTextLabel" parent="."]
+offset_left = -35.0
+offset_top = -32.0
+offset_right = 138.0
+scale = Vector2(0.5, 0.5)
+theme_override_constants/outline_size = 7
+bbcode_enabled = true
+text = "[color=red]Goblin Archer"
+
+[node name="HealthBar" type="ProgressBar" parent="."]
+offset_left = -8.0
+offset_top = 25.0
+offset_right = 13.0
+offset_bottom = 28.0
+theme_override_styles/background = SubResource("StyleBoxFlat_xqe76")
+theme_override_styles/fill = SubResource("StyleBoxFlat_p1ixp")
+max_value = 15.0
+value = 15.0
+show_percentage = false
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_siscd")
+}
+
+[node name="CombatShouts" type="RichTextLabel" parent="."]
+offset_left = 57.0
+offset_top = -48.0
+offset_right = 445.0
+offset_bottom = 11.0
+bbcode_enabled = true
+
+[node name="Marker2D" type="Marker2D" parent="."]
+
+[node name="HurtNoise" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_rqvm6")
+
+[node name="ManaBar" parent="." instance=ExtResource("5_0ti03")]
+offset_left = -8.0
+offset_top = 28.0
+offset_right = 13.0
+offset_bottom = 31.0
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

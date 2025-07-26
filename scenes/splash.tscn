@@ -1,0 +1,124 @@
+[gd_scene load_steps=7 format=3 uid="uid://ch7a6fpsjvvq6"]
+
+[ext_resource type="Texture2D" uid="uid://2smwk2e7utpu" path="res://assets/images/godot_logo_transparent.png" id="1_bp72v"]
+[ext_resource type="Script" path="res://scripts/splash.gd" id="1_wpm1s"]
+[ext_resource type="Texture2D" uid="uid://t4yveyygph2q" path="res://assets/images/projectmayhem.png" id="2_1li2v"]
+
+[sub_resource type="Animation" id="Animation_rw8sd"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("projectmayhem:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Godot:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_defad"]
+resource_name = "Splash"
+length = 9.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Godot:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(4, 6.03333, 8),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("projectmayhem:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.0666667, 1.96667, 3.96667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(8.9),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"_splash_completed"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_hvnwv"]
+_data = {
+"RESET": SubResource("Animation_rw8sd"),
+"Splash": SubResource("Animation_defad")
+}
+
+[node name="Splash" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_wpm1s")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Godot" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(1105, 545)
+scale = Vector2(0.344875, 0.344875)
+texture = ExtResource("1_bp72v")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Godot"]
+offset_left = -1670.17
+offset_top = -124.683
+offset_right = -368.169
+offset_bottom = 191.317
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/normal_font_size = 260
+bbcode_enabled = true
+text = "Made with "
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_hvnwv")
+}
+
+[node name="projectmayhem" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(947, 549)
+texture = ExtResource("2_1li2v")

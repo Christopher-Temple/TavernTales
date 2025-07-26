@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://b3yhbhv6buy03"]
+
+[ext_resource type="Texture2D" uid="uid://doyc6d55a22b6" path="res://assets/images/natureDecor/Tree Stump 5 - Cut.png" id="1_ho0v0"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3rf56"]
+radius = 39.0128
+
+[node name="Tree5" type="StaticBody2D"]
+collision_layer = 8
+collision_mask = 6
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_3rf56")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_ho0v0")

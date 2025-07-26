@@ -1,0 +1,369 @@
+[gd_scene load_steps=11 format=3 uid="uid://di3vv5t1l0cpo"]
+
+[ext_resource type="Script" path="res://scripts/character_creator.gd" id="1_uqf8u"]
+[ext_resource type="Texture2D" uid="uid://kun25ew8op75" path="res://assets/images/newTitle.png" id="2_o2rb1"]
+[ext_resource type="AudioStream" uid="uid://biahidwgnemv1" path="res://assets/sfx/Selection.wav" id="2_p2lgf"]
+[ext_resource type="Texture2D" uid="uid://chrkm8olrd77n" path="res://assets/images/UI/contextBox.png" id="4_yjl3f"]
+[ext_resource type="Script" path="res://scripts/race_list.gd" id="8_np8pp"]
+[ext_resource type="Script" path="res://scripts/class_list.gd" id="9_58q4k"]
+[ext_resource type="PackedScene" uid="uid://8yy25gv2xxsf" path="res://scenes/options_menu_button.tscn" id="9_85g44"]
+[ext_resource type="Theme" uid="uid://dco7pt1y644mi" path="res://themes/ConfirmPopup.tres" id="9_j7qqg"]
+[ext_resource type="Script" path="res://scripts/background_list.gd" id="10_cftn4"]
+[ext_resource type="ButtonGroup" uid="uid://c4toy7l76w0f5" path="res://themes/new_button_group.tres" id="11_8c8xp"]
+
+[node name="CharacterCreator" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 0.06
+offset_right = 0.0600586
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_uqf8u")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 1931.0
+offset_bottom = 1094.0
+color = Color(0, 0, 0, 1)
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.156863)
+position = Vector2(958.94, 540.5)
+texture = ExtResource("2_o2rb1")
+
+[node name="Save" type="Button" parent="."]
+layout_mode = 0
+offset_left = 452.94
+offset_top = 920.0
+offset_right = 505.94
+offset_bottom = 953.0
+focus_mode = 0
+theme_override_colors/font_disabled_color = Color(0.4375, 0.430664, 0.430664, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 32
+disabled = true
+text = "Save"
+
+[node name="Return" type="Button" parent="."]
+layout_mode = 0
+offset_left = 842.94
+offset_top = 982.0
+offset_right = 1016.94
+offset_bottom = 1047.0
+focus_mode = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 64
+text = "Return"
+
+[node name="Click" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_p2lgf")
+bus = &"sfx"
+
+[node name="LineEdit" type="LineEdit" parent="."]
+layout_mode = 0
+offset_left = 105.94
+offset_top = 914.0
+offset_right = 428.94
+offset_bottom = 955.0
+theme_override_font_sizes/font_size = 32
+placeholder_text = "Character Name"
+alignment = 1
+max_length = 16
+
+[node name="StatsPreviewTitle" type="Label" parent="."]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+offset_left = 1372.0
+offset_top = 61.0
+offset_right = 1581.0
+offset_bottom = 101.0
+theme_override_font_sizes/font_size = 32
+text = "STATS PREVIEW"
+horizontal_alignment = 1
+
+[node name="ContextBox" type="Sprite2D" parent="."]
+position = Vector2(1486.03, 413.25)
+scale = Vector2(1.46011, 1.79286)
+texture = ExtResource("4_yjl3f")
+
+[node name="BoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 1146.0
+offset_top = 127.0
+offset_right = 1615.0
+offset_bottom = 446.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="BoxContainer"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="BoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Spacer5" type="VBoxContainer" parent="BoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+
+[node name="Race" type="VBoxContainer" parent="BoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="BoxContainer/HBoxContainer/Race"]
+layout_mode = 2
+
+[node name="Labels" type="VBoxContainer" parent="BoxContainer/HBoxContainer/Race/HBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+
+[node name="str" type="Label" parent="BoxContainer/HBoxContainer/Race/HBoxContainer/Labels"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 32
+text = "Strength :"
+horizontal_alignment = 2
+
+[node name="dex" type="Label" parent="BoxContainer/HBoxContainer/Race/HBoxContainer/Labels"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 32
+text = "Dexterity :"
+horizontal_alignment = 2
+
+[node name="con" type="Label" parent="BoxContainer/HBoxContainer/Race/HBoxContainer/Labels"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 32
+text = "Constitution :"
+horizontal_alignment = 2
+
+[node name="wis" type="Label" parent="BoxContainer/HBoxContainer/Race/HBoxContainer/Labels"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 32
+text = "Wisdom :"
+horizontal_alignment = 2
+
+[node name="cha" type="Label" parent="BoxContainer/HBoxContainer/Race/HBoxContainer/Labels"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 32
+text = "Charisma :"
+horizontal_alignment = 2
+
+[node name="Values" type="VBoxContainer" parent="BoxContainer/HBoxContainer/Race/HBoxContainer"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+
+[node name="strValue" type="Label" parent="BoxContainer/HBoxContainer/Race/HBoxContainer/Values"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 32
+horizontal_alignment = 1
+
+[node name="dexValue" type="Label" parent="BoxContainer/HBoxContainer/Race/HBoxContainer/Values"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 32
+horizontal_alignment = 1
+
+[node name="conValue" type="Label" parent="BoxContainer/HBoxContainer/Race/HBoxContainer/Values"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 32
+horizontal_alignment = 1
+
+[node name="wisValue" type="Label" parent="BoxContainer/HBoxContainer/Race/HBoxContainer/Values"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 32
+horizontal_alignment = 1
+
+[node name="chaValue" type="Label" parent="BoxContainer/HBoxContainer/Race/HBoxContainer/Values"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 32
+horizontal_alignment = 1
+
+[node name="Spacer" type="VBoxContainer" parent="BoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+
+[node name="Traits" type="VBoxContainer" parent="BoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TraitsTextArea" type="RichTextLabel" parent="BoxContainer/HBoxContainer/Traits"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 24
+bbcode_enabled = true
+
+[node name="Spacer2" type="VBoxContainer" parent="BoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+
+[node name="Spacer4" type="VBoxContainer" parent="BoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Spacer6" type="VBoxContainer" parent="BoxContainer"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TraitDescriptions" type="RichTextLabel" parent="BoxContainer"]
+custom_minimum_size = Vector2(600, 300)
+layout_mode = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 24
+bbcode_enabled = true
+
+[node name="Race" type="Label" parent="."]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+offset_left = 180.0
+offset_top = 65.0
+offset_right = 330.0
+offset_bottom = 98.0
+theme_override_font_sizes/font_size = 32
+text = "RACE"
+horizontal_alignment = 1
+
+[node name="Class" type="Label" parent="."]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+offset_left = 497.0
+offset_top = 66.0
+offset_right = 647.0
+offset_bottom = 99.0
+theme_override_font_sizes/font_size = 32
+text = "CLASS"
+horizontal_alignment = 1
+
+[node name="Background" type="Label" parent="."]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+offset_left = 786.0
+offset_top = 65.0
+offset_right = 1016.0
+offset_bottom = 98.0
+theme_override_font_sizes/font_size = 32
+text = "BACKGROUND"
+horizontal_alignment = 1
+
+[node name="ClassList" type="ItemList" parent="."]
+clip_contents = false
+layout_mode = 2
+offset_left = 461.0
+offset_top = 106.0
+offset_right = 711.0
+offset_bottom = 816.0
+size_flags_horizontal = 3
+focus_mode = 0
+theme_override_font_sizes/font_size = 32
+allow_search = false
+text_overrun_behavior = 0
+script = ExtResource("9_58q4k")
+
+[node name="BackgroundList" type="ItemList" parent="."]
+texture_filter = 3
+layout_mode = 2
+offset_left = 787.0
+offset_top = 103.0
+offset_right = 1037.0
+offset_bottom = 813.0
+size_flags_horizontal = 3
+focus_mode = 0
+theme_override_font_sizes/font_size = 32
+allow_search = false
+text_overrun_behavior = 0
+script = ExtResource("10_cftn4")
+
+[node name="RaceList" type="ItemList" parent="."]
+layout_mode = 2
+offset_left = 146.0
+offset_top = 100.0
+offset_right = 396.0
+offset_bottom = 810.0
+size_flags_horizontal = 3
+focus_mode = 0
+theme_override_font_sizes/font_size = 32
+allow_search = false
+text_overrun_behavior = 0
+script = ExtResource("8_np8pp")
+
+[node name="MaleCheck" type="CheckBox" parent="."]
+layout_mode = 0
+offset_left = 148.94
+offset_top = 841.0
+offset_right = 196.94
+offset_bottom = 889.0
+button_group = ExtResource("11_8c8xp")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MaleCheck"]
+layout_mode = 0
+offset_left = 41.0
+offset_top = 10.0
+offset_right = 166.0
+offset_bottom = 50.0
+theme_override_colors/default_color = Color(0.976563, 0.976563, 0.976563, 1)
+text = "Male"
+
+[node name="FemaleCheck" type="CheckBox" parent="."]
+layout_mode = 0
+offset_left = 281.94
+offset_top = 841.0
+offset_right = 329.94
+offset_bottom = 889.0
+button_group = ExtResource("11_8c8xp")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="FemaleCheck"]
+layout_mode = 0
+offset_left = 43.0
+offset_top = 9.0
+offset_right = 149.0
+offset_bottom = 49.0
+theme_override_colors/default_color = Color(1, 0.980469, 0.980469, 1)
+text = "Female"
+
+[node name="accept" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_p2lgf")
+
+[node name="fadescreen" type="ColorRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.807843)
+
+[node name="CharacterSaved" type="AcceptDialog" parent="fadescreen"]
+title = ""
+position = Vector2i(590, 478)
+size = Vector2i(208, 116)
+theme = ExtResource("9_j7qqg")
+dialog_text = "Character Saved!"
+
+[node name="OptionsMenuButton" parent="." instance=ExtResource("9_85g44")]
+layout_mode = 0
+offset_left = 1852.0
+offset_top = 7.0
+offset_right = 1972.0
+offset_bottom = 127.0
+
+[connection signal="pressed" from="Save" to="." method="_on_save_pressed"]
+[connection signal="pressed" from="Return" to="." method="_on_return_pressed"]
+[connection signal="text_changed" from="LineEdit" to="." method="_on_line_edit_text_changed"]
+[connection signal="item_selected" from="ClassList" to="." method="_on_class_list_item_selected"]
+[connection signal="item_selected" from="BackgroundList" to="." method="_on_background_list_item_selected"]
+[connection signal="item_selected" from="RaceList" to="." method="_on_race_list_item_selected"]
+[connection signal="toggled" from="MaleCheck" to="." method="_on_male_check_toggled"]
+[connection signal="pressed" from="FemaleCheck" to="." method="_on_female_check_pressed"]
+[connection signal="confirmed" from="fadescreen/CharacterSaved" to="." method="_on_character_saved_confirmed"]

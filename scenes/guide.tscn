@@ -1,0 +1,77 @@
+[gd_scene load_steps=6 format=3 uid="uid://b71ilv5btjb5q"]
+
+[ext_resource type="Script" path="res://scripts/guide.gd" id="1_vqcfy"]
+[ext_resource type="Texture2D" uid="uid://kun25ew8op75" path="res://assets/images/newTitle.png" id="2_v7j2m"]
+[ext_resource type="PackedScene" uid="uid://8yy25gv2xxsf" path="res://scenes/options_menu_button.tscn" id="3_lm70k"]
+[ext_resource type="Texture2D" uid="uid://chrkm8olrd77n" path="res://assets/images/UI/contextBox.png" id="5_vks71"]
+[ext_resource type="AudioStream" uid="uid://biahidwgnemv1" path="res://assets/sfx/Selection.wav" id="6_ndyjj"]
+
+[node name="Guide" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_vqcfy")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.117647)
+position = Vector2(960, 540)
+texture = ExtResource("2_v7j2m")
+
+[node name="Return" type="Button" parent="."]
+layout_mode = 0
+offset_left = 890.0
+offset_top = 968.0
+offset_right = 1014.0
+offset_bottom = 1019.0
+focus_mode = 0
+text = "Return"
+
+[node name="Accept" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_ndyjj")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(944, 493)
+scale = Vector2(3.12, 2.28571)
+texture = ExtResource("5_vks71")
+
+[node name="Text" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 232.0
+offset_top = 144.0
+offset_right = 1655.0
+offset_bottom = 855.0
+theme_override_colors/default_color = Color(0.996094, 0.996094, 0.996094, 1)
+bbcode_enabled = true
+text = "[color=black]Tavern Tales is based on the retelling of adventures by people within a tavern. These tales are ranked by difficulty, with the easiest being \"Heroic Tales\" tales, \"Epic Adventures\" being the next hardest, and \"Legendary Fables\" being the most difficult (since the story teller is exaggerating many aspects of the story!).[p]
+Step one is to create a character that you will play as. Your race, class, and background will determine your stats and traits. Traits can grant you the ability to cast a spell, open more dialog options, grant new adventure options, or grant combat bonuses.
+[p]
+Once you save your character, it should appear in your User\\AppData\\Roaming\\Godot\\app_userdata\\Tavern Tales\\ folder as your character name with the .cfg extension. By default the file is unencrypted and can be edited. If you want encrypted files, there is an option inside the game's settings.
+[p]
+Before choosing an adventure, you must load a character to play as. Currently, only the first adventure is available and it's currently a work in progress.
+[p]
+The options also have a setting for debugging. This turns on a visible ID number during the adventure. If you get stuck at any point in the story and want to submit feedback, please provide the current ID number in your feedback. If debugging is currently off, you can press ` and type debug on (all lowercase) to see the current ID.
+[p]
+Combat is automated and abilities will be used automatically. I feel this is an interesting way to approach combat instead of the standard method used by this type of game. If certain fights feel too easy or hard, please submit feedback and include information on which fight you are doing and the names of all non-player allied party members.
+[p]
+If you obtain new equipment, you can equip it by pressing the inventory button then choosing an item. Only 1 armor and 1 weapon can be equipped at a time."
+
+[node name="OptionsMenuButton" parent="." instance=ExtResource("3_lm70k")]
+layout_mode = 0
+offset_left = 1852.0
+offset_top = 7.0
+offset_right = 1972.0
+offset_bottom = 127.0
+
+[connection signal="pressed" from="Return" to="." method="_on_button_pressed"]

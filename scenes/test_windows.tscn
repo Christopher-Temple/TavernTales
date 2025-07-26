@@ -1,0 +1,34 @@
+[gd_scene load_steps=5 format=3 uid="uid://dwl1u4x3ycsac"]
+
+[ext_resource type="Theme" uid="uid://dco7pt1y644mi" path="res://themes/ConfirmPopup.tres" id="1_4jodj"]
+[ext_resource type="Texture2D" uid="uid://cai6ekm2wwjw0" path="res://assets/images/contextBox.png" id="1_p7f11"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_06a1v"]
+texture = ExtResource("1_p7f11")
+expand_margin_left = 15.0
+expand_margin_top = 35.0
+expand_margin_right = 15.0
+expand_margin_bottom = 35.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ngcjw"]
+texture = ExtResource("1_p7f11")
+expand_margin_left = 15.0
+expand_margin_top = 35.0
+expand_margin_right = 15.0
+expand_margin_bottom = 35.0
+
+[node name="TestWindows" type="Window"]
+title = "Test Title"
+position = Vector2i(400, 222)
+size = Vector2i(300, 300)
+theme = ExtResource("1_4jodj")
+theme_override_styles/embedded_border = SubResource("StyleBoxTexture_06a1v")
+theme_override_styles/embedded_unfocused_border = SubResource("StyleBoxTexture_ngcjw")
+
+[node name="AcceptDialog" type="AcceptDialog" parent="."]
+title = "Delete Item?"
+position = Vector2i(850, 390)
+size = Vector2i(172, 100)
+visible = true
+theme = ExtResource("1_4jodj")
+dialog_text = "Are you sure?"
